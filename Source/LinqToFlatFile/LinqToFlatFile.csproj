@@ -42,14 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FixedFileReader.cs" />
+    <Compile Include="FixedFileWriter.cs" />
     <Compile Include="FixedPositionAttribute.cs" />
-    <Compile Include="FixedPositionEntityBase.cs" />
-    <Compile Include="IFixedEntity.cs" />
-    <Compile Include="IFixedFile.cs" />
+    <Compile Include="IFileWriter.cs" />
+    <Compile Include="IFileReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TabFile.cs" />
+    <Compile Include="TabFileReader.cs" />
+    <Compile Include="TabFileWriter.cs" />
     <Compile Include="TabPositionAttribute.cs" />
-    <Compile Include="TabPositionFixedEntity.cs" />
     <Compile Include="TrimInputMode.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
