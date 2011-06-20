@@ -34,7 +34,7 @@ namespace LinqToFlatFile
         {
             string result = string.Empty;
 
-            foreach (PropertyInfo property in GetType().GetProperties())
+            foreach (PropertyInfo property in entity.GetType().GetProperties())
             {
                 foreach (
                     FixedPositionAttribute fixedFileAttribute in
@@ -42,7 +42,7 @@ namespace LinqToFlatFile
                 {
                     if (fixedFileAttribute != null)
                     {
-                        object theValue = property.GetValue(this, null);
+                        object theValue = property.GetValue(entity, null);
                         string propertyValue = theValue != null ? theValue.ToString() : string.Empty;
 
                         int width = fixedFileAttribute.EndPosition - fixedFileAttribute.StartPosition + 1;
@@ -102,6 +102,6 @@ namespace LinqToFlatFile
             throw new NotImplementedException();
         }
 
-        
+
     }
 }
