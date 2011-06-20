@@ -61,7 +61,7 @@
   <ItemGroup>
     <Compile Include="FixedFiles\Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="FixedFiles\TabFileReaderTest.cs" />
+    <Compile Include="FixedFiles\FixedFileWriterTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LinqToFlatFile\LinqToFlatFile.csproj">

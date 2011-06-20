@@ -24,14 +24,14 @@ namespace LinqToFlatFile
             set { _paddingChar = value; }
         }
 
-     
+
 
         public IEnumerable<TEntity> ReadFile(Stream stream, bool headerRow)
         {
             throw new NotImplementedException();
         }
 
-        TEntity IFileReader<TEntity>.ReadLine(string line)
+        public TEntity ReadLine(string line)
         {
             var entity = new TEntity();
             if (!String.IsNullOrEmpty(line))
@@ -129,7 +129,7 @@ namespace LinqToFlatFile
                                     default:
                                         break;
                                 }
-                                property.SetValue(this, theValue, null);
+                                property.SetValue(entity, theValue, null);
                             }
                             catch (Exception ex)
                             {
