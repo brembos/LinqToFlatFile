@@ -10,6 +10,7 @@ namespace LinqToFlatFile
 {
     public class TabFileWriter<TEntity> : IFileWriter<TEntity> where TEntity : new()
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2000:Dispose objects before losing scope")]
         public Stream WriteFile(IEnumerable<TEntity> collection, bool headerRow)
         {
             if (collection == null) throw new ArgumentNullException("collection");
@@ -74,6 +75,11 @@ namespace LinqToFlatFile
                     break;
                 }
             }
+            return Concatinate(values);
+        }
+
+        private string Concatinate(SortedDictionary<int, string> values)
+        {
             return values.Values.Aggregate<string, string>(null, (current, value) => string.IsNullOrEmpty(current) ? value : current + "\t" + value);
         }
 
