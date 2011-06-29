@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using LinqToFlatFile;
 
 namespace LinqToFlatFile
 {
-    public class TabFileWriter<TEntity> : IFileWriter<TEntity> where TEntity :  new()
+    public class TabFileWriter<TEntity> : IFileWriter<TEntity> where TEntity : new()
     {
         public Stream WriteFile(IEnumerable<TEntity> collection, bool headerRow)
         {
@@ -43,7 +41,7 @@ namespace LinqToFlatFile
                 {
                     if (fixedFileAttribute != null)
                     {
-                        object theValue = property.GetValue(this, null);
+                        object theValue = property.GetValue(entity, null);
                         string propertyValue = theValue != null ? theValue.ToString() : string.Empty;
 
 
@@ -76,12 +74,12 @@ namespace LinqToFlatFile
                     break;
                 }
             }
-            return values.Values.Aggregate<string, string>(null, (current, value) => current + (value + "\t"));
+            return values.Values.Aggregate<string, string>(null, (current, value) => string.IsNullOrEmpty(current) ? value : current + "\t" + value);
         }
 
         public string MakeHeader(TEntity entity)
         {
-        
+
             var values = new SortedDictionary<int, string>();
             foreach (PropertyInfo property in entity.GetType().GetProperties())
             {
@@ -96,7 +94,7 @@ namespace LinqToFlatFile
                     break;
                 }
             }
-            return values.Values.Aggregate<string, string>(null, (current, value) => current + (value + "\t"));
+            return values.Values.Aggregate<string, string>(null, (current, value) => string.IsNullOrEmpty(current) ? value : current + "\t" + value);
         }
     }
 }
