@@ -23,5 +23,14 @@ namespace UnitTests.FixedFiles
             var line = writer.MakeHeader(person);
             Assert.AreEqual("Id\tName", line);
         }
+
+        [Test()]
+        [ExpectedException(typeof(AttributeException))]
+        public void EncodingEntityWithoutAttributeFailes()
+        {
+            var person = new PersonWithoutAttributes() { Id = 123, Name = "Elvis Presley" };
+            var writer = new TabFileWriter<PersonWithoutAttributes>();
+            var line = writer.MakeHeader(person);
+        }
     }
 }

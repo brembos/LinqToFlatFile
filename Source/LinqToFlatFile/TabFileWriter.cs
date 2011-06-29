@@ -79,7 +79,7 @@ namespace LinqToFlatFile
 
         public string MakeHeader(TEntity entity)
         {
-
+            VerifyAttributes(entity);
             var values = new SortedDictionary<int, string>();
             foreach (PropertyInfo property in entity.GetType().GetProperties())
             {
@@ -95,6 +95,19 @@ namespace LinqToFlatFile
                 }
             }
             return values.Values.Aggregate<string, string>(null, (current, value) => string.IsNullOrEmpty(current) ? value : current + "\t" + value);
+        }
+
+        private void VerifyAttributes(TEntity entity)
+        {
+            bool noAttributes;
+            foreach (var propertyInfo in entity.GetType().GetProperties())
+            {
+                if (propertyInfo.GetCustomAttributes(typeof(TabPositionAttribute), false).Count() > 0)
+                {
+                    return;
+                }
+            }
+            throw new AttributeException();
         }
     }
 }
