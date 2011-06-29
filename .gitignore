@@ -43,3 +43,7 @@ _ReSharper*/
 
 # Office Temp Files
 ~$*
+
+#NCrunch
+*.crunchsolution.*
+*.crunchproject.local.xml
