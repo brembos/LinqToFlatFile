@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -27,12 +26,12 @@ namespace LinqToFlatFile
             }
         }
 
-        public TEntity ReadLine(string input)
+        public TEntity ReadLine(string line)
         {
             var entity = new TEntity();
-            if (!String.IsNullOrEmpty(input))
+            if (!String.IsNullOrEmpty(line))
             {
-                var array = input.Split('\t');
+                var array = line.Split('\t');
                 foreach (PropertyInfo property in entity.GetType().GetProperties())
                 {
                     foreach (

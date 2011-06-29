@@ -20,21 +20,6 @@ namespace LinqToFlatFile
             }
         }
 
-        public TabPositionAttribute(int index, bool mandatory)
-        {
-            if (index >= 0)
-            {
-                Index = index;
-            }
-            else
-            {
-                throw new ArgumentException("Index must be greater than zero.");
-            }
-            Mandatory = mandatory;
-        }
-
         public int Index { get; private set; }
-
-        public bool Mandatory { get; private set; }
     }
 }

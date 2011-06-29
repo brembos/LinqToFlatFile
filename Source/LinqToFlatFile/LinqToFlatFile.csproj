@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AttributeException.cs" />
+    <Compile Include="AttributeVerifier.cs" />
     <Compile Include="FixedFileReader.cs" />
     <Compile Include="FixedFileWriter.cs" />
     <Compile Include="FixedPositionAttribute.cs" />

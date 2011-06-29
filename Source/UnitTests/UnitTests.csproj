@@ -61,6 +61,7 @@
   <ItemGroup>
     <Compile Include="FixedFiles\FixedFileReaderTests.cs" />
     <Compile Include="FixedFiles\Person.cs" />
+    <Compile Include="FixedFiles\PersonWithoutAttributes.cs" />
     <Compile Include="FixedFiles\TabFileWriterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FixedFiles\FixedFileWriterTests.cs" />

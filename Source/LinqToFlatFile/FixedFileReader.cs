@@ -8,23 +8,27 @@ namespace LinqToFlatFile
 {
     public class FixedFileReader<TEntity> : IFileReader<TEntity> where TEntity : new()
     {
-        private const char _paddingNumber = '0';
-        private char _paddingChar = ' ';
-        private TrimInputMode _trimInput = TrimInputMode.Trim;
+        private char paddingNumber = '0';
+        private char paddingChar = ' ';
+        private TrimInputMode trimInput = TrimInputMode.Trim;
 
         public TrimInputMode TrimInput
         {
-            get { return _trimInput; }
-            set { _trimInput = value; }
+            get { return trimInput; }
+            set { trimInput = value; }
         }
 
         public char PaddingChar
         {
-            get { return _paddingChar; }
-            set { _paddingChar = value; }
+            get { return paddingChar; }
+            set { paddingChar = value; }
         }
 
-
+        public char PaddingNumber
+        {
+            get { return paddingNumber; }
+            set { paddingNumber = value; }
+        }
 
         public IEnumerable<TEntity> ReadFile(Stream stream, bool headerRow)
         {
@@ -53,7 +57,7 @@ namespace LinqToFlatFile
                                                                  fixedFileAttribute.StartPosition + 1),
                                                                 line.Length - fixedFileAttribute.StartPosition));
                             }
-                            switch (_trimInput)
+                            switch (trimInput)
                             {
                                 case TrimInputMode.Trim:
                                     substring = substring.Trim();
