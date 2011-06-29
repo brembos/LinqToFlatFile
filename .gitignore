@@ -46,3 +46,4 @@ _ReSharper*/
 
 #NCrunch
 *.crunchsolution.*
+*.crunchproject.local.xml
